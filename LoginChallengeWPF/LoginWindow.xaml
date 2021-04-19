@@ -14,7 +14,7 @@
     <Window.Resources>
         <!-- Login Window Styles -->
 
-        <!--A Style/Template for Primary Buttons-->
+        <!-- Style/Template for Primary Buttons-->
         <Style TargetType="{x:Type Button}" 
                x:Key="PrimaryButton">
 
@@ -304,6 +304,8 @@
 
         <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
             <Setter Property="PasswordChar" Value="●"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -349,11 +351,13 @@
 
     <Grid>
 
+        <!-- Grid de dos filas para el titulo y el contenido-->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <!-- Titulo -->
         <StackPanel Grid.Row="0" Background="Orange">
 
             <TextBlock Margin="0,8" 
@@ -363,53 +367,61 @@
 
         </StackPanel>
 
+        <!-- Contenido -->        
         <StackPanel Grid.Row="1"
                     MaxWidth="500">
 
+            <!-- Primer grupo de controles -->
             <StackPanel Orientation="Vertical" Margin="32,16">
 
                 <Label Content="_Unidad Académica" 
-                    Target="{Binding ElementName=txtUnidad}"
-                    Style="{StaticResource Labels}" />
+                       Target="{Binding ElementName=txtUnidad}"
+                       Style="{StaticResource Labels}" />
                 <TextBox x:Name="txtUnidad"
-                        Style="{StaticResource Textbox}" />
+                         Style="{StaticResource Textbox}" />
 
                 <Label Content="_Aula" 
-                    Target="{Binding ElementName=txtAula}" 
-                    Style="{StaticResource Labels}" />
+                       Target="{Binding ElementName=txtAula}"
+                       Style="{StaticResource Labels}" />
                 <TextBox x:Name="txtAula"
-                        Style="{StaticResource Textbox}" />
+                         Style="{StaticResource Textbox}" />
 
             </StackPanel>
 
+            <!-- Segundo grupo de controles -->
             <StackPanel Margin="32,16"
                         MaxWidth="500">
 
-                <Label Content="Cu_rso" 
-                    Style="{StaticResource Labels}"/>
-                <ComboBox Style="{StaticResource Combo}" >
+                <Label Content="Cu_rso"
+                       Target="{Binding ElementName=txtCurso}"
+                       Style="{StaticResource Labels}"/>
+                <ComboBox x:Name="txtCurso" 
+                          Style="{StaticResource Combo}" >
                     <ComboBoxItem Content="ComboBox Item #1"/>
                     <ComboBoxItem IsSelected="True" Content="Curso CBO 1-1-1 (CBO)"/>
                     <ComboBoxItem Content="ComboBox Item #3"/>
                 </ComboBox>
 
-                <Label Content="_Usuario" 
-                    Style="{StaticResource Labels}"/>
-                <ComboBox Style="{StaticResource Combo}" >
+                <Label Content="_Usuario"
+                       Target="{Binding ElementName=txtUser}"
+                       Style="{StaticResource Labels}"/>
+                <ComboBox Style="{StaticResource Combo}"
+                          x:Name="txtUser">
                     <ComboBoxItem Content="ComboBox Item #1"/>
                     <ComboBoxItem IsSelected="True" Content="Perez, Juan"/>
                     <ComboBoxItem Content="ComboBox Item #3"/>
                 </ComboBox>
 
 
-                <Label Content="_Contraseña" 
-                    Style="{StaticResource Labels}"/>
-                <PasswordBox Padding="8"
-                             FontSize="16"
+                <Label Content="_Contraseña"
+                       Target="{Binding ElementName=txtPassword}"
+                       Style="{StaticResource Labels}"/>
+                <PasswordBox x:Name="txtPassword" 
                              Style="{StaticResource PasswordBoxStyle}" />
 
             </StackPanel>
 
+            <!-- Botones -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,24">
 
                 <Button Style="{StaticResource PrimaryButton}" 
